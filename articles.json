@@ -1,0 +1,64 @@
+[
+    {
+        "id": 1,
+        "title": "title1",
+        "text": "text1",
+        "date": 1111,
+        "author": "author1",
+        "comments": [
+            {
+                "id": 11,
+                "articleId": 1,
+                "text": "text11",
+                "date": 1111,
+                "author": "author12"
+            },
+            {
+                "id": 12,
+                "articleId": 1,
+                "text": "text12",
+                "date": 1112,
+                "author": "author12"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "title2",
+        "text": "text2",
+        "date": 2222,
+        "author": "author2",
+        "comments": [
+            {
+                "id": 21,
+                "articleId": 2,
+                "text": "text21",
+                "date": 1111,
+                "author": "author21"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "title3",
+        "text": "text3",
+        "date": 3333,
+        "author": "author3",
+        "comments": [
+            {
+                "id": 31,
+                "articleId": 3,
+                "text": "text31",
+                "date": 1111,
+                "author": "author32"
+            },
+            {
+                "id": 32,
+                "articleId": 3,
+                "text": "text12",
+                "date": 1112,
+                "author": "author12"
+            }
+        ]
+    }
+]
