@@ -12,7 +12,7 @@ module.exports = class UnitOfWork {
     static commit(){
         const articlePath = "./articles.json";
 		fs.truncate(articlePath, () => {
-            fs.writeFile(articlePath, JSON.stringify(this.articles));
+            fs.writeFile(articlePath, JSON.stringify(instance.articles));
         });
     }
 }

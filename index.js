@@ -2,6 +2,8 @@ const http = require('http');
 const url = require('url');
 
 const{Log, CreateLogObjFromReq} = require("./logger")
+const {Check} = require("./check");
+const error = require("./error");
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -10,10 +12,10 @@ const {
 	readArticleById,
 	createArticle,
 	updateArticle,
-    deleteArticle,
-    createComment,
-    deleteComment,
-    requestInvalid
+  deleteArticle,
+  createComment,
+  deleteComment,
+  requestInvalid
 } = require("./articleAction");
 
 const handlers = {
@@ -23,8 +25,8 @@ const handlers = {
 	"/api/articles/update": updateArticle,
 	"/api/articles/delete": deleteArticle,
 	"/api/comments/create": createComment,
-	"/api/comments/delete": deleteComment,
-	"/api/error/400": requestInvalid
+  "/api/comments/delete": deleteComment,
+  "/api/error/400": requestInvalid
 };
 
 const server = http.createServer((req, res) => {
@@ -70,7 +72,13 @@ function parseBodyJson(req, cb) {
     
     let params = (req.method === "GET") ? parseGetRequest(req) : JSON.parse(body);
     Log(CreateLogObjFromReq(req.url, params));
-    cb(null, params);
+    if(!Check(req.url, params)){
+      req.url = "/api/error/400";
+      cb(error.INVALID_REQUEST, null);
+    }
+    else{
+      cb(null, params);
+    }
   });
 }
 
